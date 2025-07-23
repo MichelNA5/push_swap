@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:38:42 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/07/22 22:13:25 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/07/23 10:25:42 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,43 +43,40 @@ int	count_smaller(int *arr, int size, int nb)
 
 void	index_array(int *arr, int size)
 {
-	int	i;
-	int	value;
+	int		i;
+	int		*tmp;
 
+	tmp = malloc(sizeof(int) * size);
+	if (!tmp)
+		error_exit();
 	i = 0;
 	while (i < size)
 	{
-		value = count_smaller(arr, size, arr[i]);
-		arr[i] = value;
+		tmp[i] = count_smaller(arr, size, arr[i]);
 		i++;
 	}
+	i = 0;
+	while (i < size)
+	{
+		arr[i] = tmp[i];
+		i++;
+	}
+	free(tmp);
 }
 
-void	convert_binary(int *arr, int size)
+void	free_split(char **arr)
 {
 	int	i;
-	int	value;
-	int	decimal;
-	int	binary;
-	int	base;
 
 	i = 0;
-	while (i < size)
+	if (!arr)
+		return ;
+	while (arr[i])
 	{
-		decimal = arr[i];
-		binary = 0;
-		base = 1;
-		while (decimal > 0)
-		{
-			if (decimal % 2)
-				binary += base;
-			decimal /= 2;
-			base *= 10;
-		}
-		value = binary;
-		arr[i] = value;
+		free(arr[i]);
 		i++;
 	}
+	free(arr);
 }
 
 int	main(int argc, char **argv)
@@ -106,5 +103,8 @@ int	main(int argc, char **argv)
 		error_exit();
 	index_array(a, size);
 	sort(a, b, size);
-	print_array(a, size);
+	free_split(temp);
+	free(a);
+	free(b);
+	return (0);
 }
