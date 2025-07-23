@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+         #
+#    By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/23 09:38:20 by mnaouss           #+#    #+#              #
-#    Updated: 2025/07/23 10:07:58 by mnaouss          ###   ########.fr        #
+#    Updated: 2025/07/23 23:01:29 by mnaouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror -Ift_printf
 NAME = push_swap
 
 # Source files
-SRC = main.c utils.c ft_split.c sort.c operations.c
+SRC = main.c utils.c ft_split.c sort.c operations.c main-helpers.c sort_small.c
 OBJ = $(SRC:.c=.o)
 
 # ft_printf files

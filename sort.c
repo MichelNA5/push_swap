@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 19:30:07 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/07/23 10:26:16 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/07/23 23:32:18 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,48 +33,67 @@ int	get_max_bits(int *arr, int size)
 	return (bits);
 }
 
+void	radix_pass(t_radix *r, int bit, int total)
+{
+	int	j;
+	int	bit_val;
+
+	j = 0;
+	while (j < total)
+	{
+		bit_val = (r->a[0] >> bit) & 1;
+		if (bit_val == 0)
+		{
+			pb(r->a, r->b, r->size_a, r->size_b);
+			r->size_a--;
+			r->size_b++;
+		}
+		else
+		{
+			ra(r->a, r->size_a);
+		}
+		j++;
+	}
+}
+
 void	sort(int *a, int *b, int size)
 {
-	int	i;
-	int	j;
-	int	maxbits;
-	int	bit;
-	int	size_a;
-	int	size_b;
-	int	elements_to_process;
+	int		i;
+	int		maxbits;
+	t_radix	r;
 
 	maxbits = get_max_bits(a, size);
-	size_a = size;
-	size_b = 0;
+	r.a = a;
+	r.b = b;
+	r.size_a = size;
+	r.size_b = 0;
 	i = 0;
 	while (i < maxbits)
 	{
-		j = 0;
-		elements_to_process = size_a;
-		while (j < elements_to_process)
+		radix_pass(&r, i, r.size_a);
+		while (r.size_b > 0)
 		{
-			bit = (a[0] >> i) & 1;
-			if (bit == 0)
-			{
-				pb(a, b, size_a, size_b);
-				ft_printf("pb\n");
-				size_a--;
-				size_b++;
-			}
-			else
-			{
-				ra(a, size_a);
-				ft_printf("ra\n");
-			}
-			j++;
-		}
-		while (size_b > 0)
-		{
-			pa(a, b, size_a, size_b);
-			ft_printf("pa\n");
-			size_a++;
-			size_b--;
+			pa(r.a, r.b, r.size_a, r.size_b);
+			r.size_a++;
+			r.size_b--;
 		}
 		i++;
+	}
+}
+
+void	sort_picker(int *a, int *b, int size)
+{
+	if (size == 2)
+	{
+		if (a[0] > a[1])
+			sa(a);
+	}
+	else if (size == 3)
+		sort_three(a);
+	else if (size <= 5)
+		sort_five(a, b, size);
+	else
+	{
+		sort(a, b, size);
 	}
 }
