@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 22:51:12 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/07/23 23:32:11 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/07/24 10:23:52 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,3 @@ void	sort_five(int *a, int *b, int size_a)
 	sort_three(a);
 	push_all_b_to_a(a, b, &size_a, &size_b);
 }
-

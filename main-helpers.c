@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main-helpers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 18:14:33 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/07/23 18:54:46 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/07/24 16:48:30 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	index_array(int *arr, int size)
 	int		*tmp;
 
 	tmp = malloc(sizeof(int) * size);
-	if (!tmp)
-		error_exit();
 	i = 0;
 	while (i < size)
 	{
@@ -93,7 +91,7 @@ char	**parse_args(int argc, char **argv, int *size)
 	return (temp);
 }
 
-void	fill_array(char **temp, int *a, int size)
+int	fill_array(char **temp, int *a, int size)
 {
 	int	i;
 
@@ -102,8 +100,9 @@ void	fill_array(char **temp, int *a, int size)
 	{
 		if (!ft_safe_atoi(temp[i], &a[i]))
 		{
-			error_exit();
+			return (0);
 		}
 		i++;
 	}
+	return (1);
 }
