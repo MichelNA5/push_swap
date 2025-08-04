@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:43:30 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/07/21 19:09:59 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/07/30 20:14:08 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_strncpy(char *s1, char *s2, int n)
+static int	ft_strncpy(char *s1, char *s2, int n)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	ft_strncpy(char *s1, char *s2, int n)
 	return (i);
 }
 
-int	is_in_charset(char c, char *charset)
+static int	is_in_charset(char c, char *charset)
 {
 	int	i;
 
@@ -40,7 +40,7 @@ int	is_in_charset(char c, char *charset)
 	return (0);
 }
 
-int	count_words(char *str, char *charset)
+static int	count_words(char *str, char *charset)
 {
 	int	count;
 	int	in_word;
@@ -63,7 +63,7 @@ int	count_words(char *str, char *charset)
 	return (count);
 }
 
-char	*input_arr(char *str, char *charset, char **arr, int i)
+static char	*input_arr(char *str, char *charset, char **arr, int i)
 {
 	int	arr_size;
 

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mnaouss <mnaouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 19:30:07 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/07/23 23:32:18 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/07/30 20:13:43 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 
-int	get_max_bits(int *arr, int size)
+static int	get_max_bits(int *arr, int size)
 {
 	int	max_num;
 	int	bits;
@@ -33,7 +33,7 @@ int	get_max_bits(int *arr, int size)
 	return (bits);
 }
 
-void	radix_pass(t_radix *r, int bit, int total)
+static void	radix_pass(t_radix *r, int bit, int total)
 {
 	int	j;
 	int	bit_val;

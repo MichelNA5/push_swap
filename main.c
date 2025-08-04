@@ -6,14 +6,14 @@
 /*   By: mnaouss <mnaouss@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/21 18:38:42 by mnaouss           #+#    #+#             */
-/*   Updated: 2025/07/24 16:48:38 by mnaouss          ###   ########.fr       */
+/*   Updated: 2025/07/30 20:13:34 by mnaouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "ft_printf/ft_printf.h"
 
-int	is_sorted(int *arr, int size)
+static int	is_sorted(int *arr, int size)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ int	is_sorted(int *arr, int size)
 	return (1);
 }
 
-void	free_all(int argc, char **temp, int *a, int *b)
+static void	free_all(int argc, char **temp, int *a, int *b)
 {
 	if (argc == 2)
 		free_split(temp);
@@ -37,7 +37,7 @@ void	free_all(int argc, char **temp, int *a, int *b)
 	free(b);
 }
 
-void	exit_free(int argc, char **temp, int *a, int *b)
+static void	exit_free(int argc, char **temp, int *a, int *b)
 {
 	free_all(argc, temp, a, b);
 	exit(EXIT_SUCCESS);
